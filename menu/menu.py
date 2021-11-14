@@ -17,7 +17,7 @@ class Menu(commands.Cog):
         self.db = self.bot.plugin_db.get_partition(self)
 
     @commands.Cog.listener()
-    async def on_thread_ready(self, thread, creator, category, initial_message):
+    async def on_thread_create(self, thread, creator, category, initial_message):
         """Sends out menu to user"""
         menu_config = await self.db.find_one({'_id': 'config'})
         if menu_config:
